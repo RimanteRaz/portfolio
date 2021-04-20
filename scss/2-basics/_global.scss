@@ -1,0 +1,23 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: $dark-2;
+  margin: 0;
+  padding-top: 3rem;
+}
+
+.container {
+  padding: 0 1rem;
+  @media (min-width: $tablet) {
+    padding: 0 3rem;
+  }
+  @media (min-width: $small-screen) {
+    padding: 0 5rem;
+  }
+  @media (min-width: $large-screen) {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}

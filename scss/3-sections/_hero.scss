@@ -1,0 +1,74 @@
+.hero {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  @media (min-width: $tablet) {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+  @media (min-width: $small-screen) {
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+  }
+  @media (min-width: $large-screen) {
+    padding-top: 12rem;
+    padding-bottom: 12rem;
+  }
+}
+
+.cta-card {
+  .card-top {
+    background-color: $lime-300;
+    height: 3rem;
+    border-radius: 11px 11px 0 0;
+  }
+  .card-body {
+    background-color: $dark-4;
+    border-radius: 0 0 11px 11px;
+    padding: 2.5rem;
+    h1 {
+      font-size: 1.563rem;
+      margin: 0;
+      padding-bottom: 2rem;
+    }
+    .card-body-btm {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center;
+      max-height: 100px;
+      .btn-secondary,
+      .btn-primary {
+        padding: 5px 20px;
+      }
+      .btn-primary {
+        margin-left: 1rem;
+      }
+    }
+  }
+  @media (min-width: $tablet) {
+    max-width: 600px;
+    margin: 0 auto;
+    .card-body {
+      padding: 2.5rem 3rem;
+      h1 {
+        font-size: 1.953rem;
+      }
+    }
+  }
+  @media (min-width: $small-screen) {
+    max-width: 750px;
+    .card-body {
+      padding: 3rem 4.5rem 2.5rem 4.5rem;
+      h1 {
+        font-size: 2.441rem;
+        padding-bottom: 2.5rem;
+      }
+      .card-body-btm {
+        .btn-secondary,
+        .btn-primary {
+          font-size: 1.25rem;
+        }
+      }
+    }
+  }
+}

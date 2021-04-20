@@ -1,0 +1,67 @@
+.contact-me {
+  background-color: $dark-3;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  @media (min-width: $tablet) {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+}
+
+.contact-form {
+  padding: 1rem;
+  background-color: $dark-5;
+  border-radius: 20px;
+  @media (min-width: $tablet) {
+    padding: 2rem;
+  }
+  @media (min-width: $small-screen) {
+    padding: 3rem;
+  }
+  @media (min-width: $large-screen) {
+    padding: 4rem;
+  }
+  background-color: $dark-5;
+  margin: 0 auto;
+  max-width: 50ch;
+  .section-title {
+    padding-top: 2.5rem;
+    padding-bottom: 0.3rem;
+    @media (min-width: $small-screen) {
+      padding-top: 1.5rem;
+      padding-bottom: 1.8rem;
+    }
+  }
+  form {
+    width: 100%;
+    label {
+      margin-top: 1.2rem;
+      font-weight: 600;
+    }
+    input,
+    textarea {
+      box-sizing: border-box;
+      margin-top: 0.3rem;
+      width: 100%;
+    }
+    .btn-div {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 1.2rem;
+      margin-bottom: 1rem;
+      @media (min-width: $small-screen) {
+        margin-top: 2rem;
+      }
+    }
+  }
+}
+
+.contact-form form {
+  .row-2-col {
+    @media (min-width: $tablet) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 30px;
+    }
+  }
+}

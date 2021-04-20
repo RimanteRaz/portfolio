@@ -1,0 +1,146 @@
+nav {
+  background-color: $dark-5;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 100;
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 3rem;
+  }
+}
+
+.site-name {
+  margin: 0;
+  a {
+    text-decoration: none;
+  }
+}
+
+.burger {
+  width: 32px;
+  height: 20px;
+  position: relative;
+  transform: rotate(0deg);
+  transition: 500ms ease-in-out;
+  cursor: pointer;
+  z-index: 1000;
+  span {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background: $light-2;
+    border-radius: 3px;
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: 250ms ease-in-out;
+    &:nth-child(1) {
+      top: 0px;
+    }
+    &:nth-child(2),
+    &:nth-child(3) {
+      top: 10px;
+    }
+    &:nth-child(4) {
+      top: 20px;
+    }
+  }
+  @media (min-width: $tablet) {
+    display: none;
+  }
+}
+
+.burger.open {
+  span {
+    &:nth-child(1) {
+      top: 10px;
+      width: 0%;
+      left: 50%;
+    }
+    &:nth-child(2) {
+      transform: rotate(45deg);
+    }
+    &:nth-child(3) {
+      transform: rotate(-45deg);
+    }
+    &:nth-child(4) {
+      top: 10px;
+      width: 0%;
+      left: 50%;
+    }
+  }
+}
+
+.nav-items {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  li {
+    a {
+      color: $light-2;
+      text-decoration: none;
+      &:hover {
+        color: $lime-300;
+      }
+    }
+  }
+}
+
+.mobile-nav {
+  position: absolute;
+  top: 3rem;
+  left: 0;
+  width: 100%;
+  height: 0;
+  transition: height 500ms ease-in-out 250ms;
+  ul {
+    opacity: 0;
+    transition: opacity 250ms ease-in-out;
+    @extend .nav-items;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    padding-top: 2rem;
+    background-color: $dark-4;
+    li {
+      padding: 2rem 0;
+    }
+  }
+  @media (min-width: $tablet) {
+    display: none;
+  }
+}
+
+.mobile-nav.open {
+  height: 100vh;
+  transition: height 500ms ease-in-out;
+  ul {
+    opacity: 1;
+    transition: opacity 250ms ease-in-out;
+  }
+}
+
+.desktop-nav {
+  display: none;
+  ul {
+    @extend .nav-items;
+  }
+  @media (min-width: $tablet) {
+    display: block;
+    ul {
+      display: flex;
+      li {
+        margin-left: 2rem;
+        @media (min-width: $small-screen) {
+          margin-left: 3rem;
+        }
+      }
+    }
+  }
+}

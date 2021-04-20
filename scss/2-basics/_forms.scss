@@ -1,0 +1,26 @@
+label,
+input,
+textarea {
+  display: block;
+}
+
+input,
+textarea {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid $dark-1;
+  background-color: $dark-3;
+  color: $light-3;
+  &:hover {
+    background-color: $dark-4;
+  }
+  &:focus {
+    border: 1px solid rgba($light-7, 0.5);
+    outline: none;
+    background-color: $dark-4;
+  }
+  //   &:invalid {
+  //     border: 1px solid $danger;
+  //   }
+}

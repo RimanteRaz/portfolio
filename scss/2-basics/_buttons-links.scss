@@ -1,0 +1,50 @@
+button {
+  border: 0;
+  padding: 0;
+  font-family: inherit;
+  line-height: inherit;
+  font-size: 100%;
+}
+
+.btn-primary {
+  @include btn;
+  background-color: $lime-300;
+  color: $dark-2;
+  font-weight: 600;
+  &:hover {
+    color: $dark-2;
+    background-color: $lime-500;
+  }
+  &:focus {
+    outline: none;
+    background-color: $lime-400;
+    box-shadow: 0 0 0 3px $lime-100;
+  }
+}
+
+.btn-secondary {
+  @include btn;
+  color: $lime-200;
+  border: 1px solid $lime-200;
+  &:hover {
+    color: $lime-300;
+    border-color: $lime-300;
+  }
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px $lime-100;
+    color: $lime-100;
+    border-color: $lime-100;
+  }
+}
+
+a {
+  color: $lime-300;
+  &:hover {
+    color: $lime-500;
+  }
+  &:focus {
+    background-color: rgba($lime-100, 0.2);
+    outline: none;
+  }
+}
