@@ -1,3 +1,62 @@
+<?php 
+
+use PHPMailer\PHPMailer\PHPMailer;
+
+require './vendor/autoload.php';
+
+if (array_key_exists('email', $_POST)) {
+  $err = false;
+  $msg = '';
+  $email = '';
+  //Validate to address
+  //Never allow arbitrary input for the 'to' address as it will turn your form into a spam gateway!
+  //Substitute appropriate addresses from your own domain, or simply use a single, fixed address
+  $to = 'rimante@rimanteraz.com';
+
+  if (array_key_exists('message', $_POST)) {
+      //Limit length and strip HTML tags
+      $message = substr(strip_tags($_POST['message']), 0, 16384);
+  } else {
+      $message = '';
+      $msg = 'No message provided!';
+      $err = true;
+  }
+  //Apply some basic validation and filtering to the name
+  if (array_key_exists('name', $_POST)) {
+      //Limit length and strip HTML tags
+      $name = substr(strip_tags($_POST['name']), 0, 255);
+  } else {
+      $name = '';
+  }
+  
+  //Make sure the address they provided is valid before trying to use it
+  if (array_key_exists('email', $_POST) && PHPMailer::validateAddress($_POST['email'])) {
+      $email = $_POST['email'];
+  } else {
+      $msg .= 'Error: invalid email address provided';
+      $err = true;
+  }
+  if (!$err) {
+      $mail = new PHPMailer();
+      $mail->isSMTP();
+      $mail->Host = 'localhost';
+      $mail->Port = 25;
+      $mail->CharSet = PHPMailer::CHARSET_UTF8;
+      //It's important not to use the submitter's address as the from address as it's forgery,
+      //which will cause your messages to fail SPF checks.
+      //Use an address in your own domain as the from address, put the submitter's address in a reply-to
+      $mail->setFrom('rimante@rimanteraz.com', (empty($name) ? 'Contact form' : $name));
+      $mail->addAddress($to);
+      $mail->addReplyTo($email, $name);
+      $mail->Body = "Contact form submission\n\n" . $message;
+      if (!$mail->send()) {
+          $msg .= 'Mailer Error: ' . $mail->ErrorInfo;
+      } else {
+          $msg .= 'Message sent!';
+      }
+  }
+} ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -82,57 +141,57 @@
             </div>
             <div class="grid-item">
               <div class="skill-logo">
-                <img src="images/skills/css.png" alt="html logo" />
+                <img src="images/skills/css.png" alt="CSS logo" />
               </div>
               <p class="text-small">CSS</p>
             </div>
             <div class="grid-item">
               <div class="skill-logo">
-                <img src="images/skills/js.png" alt="html logo" />
+                <img src="images/skills/js.png" alt="JS logo" />
               </div>
               <p class="text-small">JavaScript</p>
             </div>
             <div class="grid-item">
               <div class="skill-logo">
-                <img src="images/skills/bootstrap.png" alt="html logo" />
+                <img src="images/skills/bootstrap.png" alt="Bootstrap logo" />
               </div>
               <p class="text-small">Bootstrap</p>
             </div>
             <div class="grid-item">
               <div class="skill-logo">
-                <img src="images/skills/sass.png" alt="html logo" />
+                <img src="images/skills/sass.png" alt="Sass logo" />
               </div>
               <p class="text-small">Sass</p>
             </div>
             <div class="grid-item">
               <div class="skill-logo">
-                <img src="images/skills/webpack.png" alt="html logo" />
+                <img src="images/skills/webpack.png" alt="Webpack logo" />
               </div>
               <p class="text-small">Webpack</p>
             </div>
             <div class="grid-item">
               <div class="skill-logo">
-                <img src="images/skills/gulp.png" alt="html logo" />
+                <img src="images/skills/gulp.png" alt="Gulp logo" />
               </div>
               <p class="text-small">Gulp</p>
             </div>
             <div class="grid-item">
               <div class="skill-logo">
-                <img src="images/skills/node.png" alt="html logo" />
+                <img src="images/skills/node.png" alt="Node.js logo" />
               </div>
               <p class="text-small">Node.js</p>
             </div>
             <div class="grid-item">
               <div class="skill-logo">
-                <img src="images/skills/react.png" alt="html logo" />
+                <img src="images/skills/react.png" alt="React logo" />
               </div>
               <p class="text-small">React.js</p>
             </div>
             <div class="grid-item">
               <div class="skill-logo">
-                <img src="images/skills/php.png" alt="html logo" />
+                <img src="images/skills/php.png" alt="PHP logo" />
               </div>
-              <p class="text-small">Php</p>
+              <p class="text-small">PHP</p>
             </div>
           </div>
         </div>
@@ -144,9 +203,9 @@
       <!-- UGDYMO INOVACIJOS -->
       <div class="main-example container">
         <div class="example-image">
-          <img src="images/ugdymo-inovacijos/ugdymo-inovacijos-2.jpg" alt="" />
-          <img src="images/ugdymo-inovacijos/ugdymo-inovacijos-1.jpg" alt="" />
-          <img src="images/ugdymo-inovacijos/ugdymo-inovacijos-3.jpg" alt="" />
+          <img src="images/ugdymo-inovacijos/ugdymo-inovacijos-2.jpg" alt="example of webpage" />
+          <img src="images/ugdymo-inovacijos/ugdymo-inovacijos-1.jpg" alt="example of webpage" />
+          <img src="images/ugdymo-inovacijos/ugdymo-inovacijos-3.jpg" alt="example of webpage" />
         </div>
         <div class="example-description">
           <h4>Ugdymo inovacijos</h4>
@@ -170,17 +229,17 @@
             </p>
           </div>
           <div class="example-buttons">
-            <a href="" class="btn-primary">Preview</a>
-            <a href="" class="btn-primary">Code</a>
+            <a href="http://ugdino.rimanteraz.com/" class="btn-primary">Preview</a>
+            <a href="https://github.com/RimanteRaz/ugdymo-inovacijos-wp-theme" class="btn-primary">Code</a>
           </div>
         </div>
       </div>
       <!-- INTERNACTIONAL -->
       <div class="main-example container">
         <div class="example-image">
-          <img src="images/internactional/internactional-2.jpg" alt="" />
-          <img src="images/internactional/internactional-1.jpg" alt="" />
-          <img src="images/internactional/internactional-3.jpg" alt="" />
+          <img src="images/internactional/internactional-2.jpg" alt="example of webpage" />
+          <img src="images/internactional/internactional-1.jpg" alt="example of webpage" />
+          <img src="images/internactional/internactional-3.jpg" alt="example of webpage" />
         </div>
         <div class="example-description">
           <h4>InternACTional</h4>
@@ -201,8 +260,8 @@
             </p>
           </div>
           <div class="example-buttons">
-            <a href="" class="btn-primary">Preview</a>
-            <a href="" class="btn-primary">Code</a>
+            <a href="http://internactional.rimanteraz.com/" class="btn-primary">Preview</a>
+            <a href="https://github.com/RimanteRaz/internactional-wp-theme" class="btn-primary">Code</a>
           </div>
         </div>
       </div>
@@ -213,8 +272,7 @@
       <div class="container">
         <div class="contact-form">
           <h2 class="section-title">Contact me</h2>
-          <form action="contactform.php" method="post" id="contact-me">
-          <?php echo((!empty($errorMessage)) ? $errorMessage : '') ?>
+          <form method="post" id="contact-me">
             <div class="row-2-col">
               <div>
                 <label for="name">Name:</label>
@@ -245,6 +303,9 @@
               required
               placeholder="Your message..."
             ></textarea>
+            <?php if (!empty($msg)){
+              echo $msg;
+            }?>
             <div class="btn-div">
               <button type="submit" name="submit" class="btn-primary">
                 Send
@@ -254,7 +315,7 @@
         </div>
       </div>
     </div>
-    <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script> -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
     <script src="index.js"></script>
   </body>
 </html>
