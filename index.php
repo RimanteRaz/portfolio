@@ -1,6 +1,9 @@
 <?php 
 
 use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+
+// date_default_timezone_set('Etc/UTC');
 
 require './vendor/autoload.php';
 
@@ -39,8 +42,9 @@ if (array_key_exists('email', $_POST)) {
   if (!$err) {
       $mail = new PHPMailer();
       $mail->isSMTP();
-      $mail->Host = 'localhost';
-      $mail->Port = 25;
+      $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+      $mail->Host = 'smtp.hostinger.lt';
+      $mail->Port = 587;
       $mail->CharSet = PHPMailer::CHARSET_UTF8;
       //It's important not to use the submitter's address as the from address as it's forgery,
       //which will cause your messages to fail SPF checks.
