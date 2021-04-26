@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <title>Document</title>
+    <title>Rimante | Front-end portfolio</title>
   </head>
   <body>
     <nav>
@@ -218,9 +218,19 @@
         <div class="contact-form">
           <h2 class="section-title">Contact me</h2>
           <form method="post" id="contact-me">
+            <?php if (!empty($error_msg)){?>
+              <div class="error-msg" style="padding: 1rem; border: 1px solid #900e25; background-color: rgba(119, 8, 37, 0.2); border-radius: 11px;">
+                <?php echo $error_msg; ?>
+              </div>
+            <?php } ?>
+            <?php if (!empty($success_msg)){?>
+              <div class="success-msg" style="padding: 1rem; border: 1px solid #4d7405; background-color: rgba(61, 96, 3, 0.2); border-radius: 11px;">
+                <?php echo $success_msg; ?>
+              </div>
+            <?php } ?>
             <div class="row-2-col">
               <div>
-                <label for="name">Name:</label>
+                <label for="name">Name</label>
                 <input
                   type="text"
                   id="name"
@@ -229,7 +239,7 @@
                 />
               </div>
               <div>
-                <label for="email">Email:</label>
+                <label for="email">Email*</label>
                 <input
                   type="email"
                   id="email"
@@ -239,7 +249,7 @@
                 />
               </div>
             </div>
-            <label for="message">Message:</label>
+            <label for="message">Message*</label>
             <textarea
               name="message"
               id="message"
@@ -247,12 +257,7 @@
               required
               placeholder="Your message..."
             ></textarea>
-            <?php if (!empty($error_msg)){
-              echo $error_msg;
-            }?>
-            <?php if (!empty($success_msg)){
-              echo $success_msg;
-            }?>
+            <p>* Required fields.</p>
             <div class="btn-div">
               <button type="submit" name="submit" class="btn-primary">
                 Send
@@ -264,5 +269,10 @@
     </div>
     <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
     <script src="index.js"></script>
+    <script>
+      if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+      }
+</script>
   </body>
 </html>

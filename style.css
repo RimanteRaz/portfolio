@@ -663,7 +663,7 @@ nav {
   .contact-form form {
     width: 100%; }
     .contact-form form label {
-      margin-top: 1.2rem;
+      margin-top: 1rem;
       font-weight: 600; }
     .contact-form form input,
     .contact-form form textarea {
@@ -678,11 +678,10 @@ nav {
       -webkit-box-pack: end;
           -ms-flex-pack: end;
               justify-content: flex-end;
-      margin-top: 1.2rem;
       margin-bottom: 1rem; }
       @media (min-width: 62em) {
         .contact-form form .btn-div {
-          margin-top: 2rem; } }
+          margin-bottom: 0.5rem; } }
 
 @media (min-width: 40em) {
   .contact-form form .row-2-col {
@@ -691,3 +690,23 @@ nav {
     -webkit-column-gap: 30px;
        -moz-column-gap: 30px;
             column-gap: 30px; } }
+
+.contact-form form .success-msg .error-msg {
+  margin-top: 1.2rem;
+  padding: 1rem;
+  border: 1px solid #900e25;
+  background-color: rgba(119, 8, 37, 0.2);
+  border-radius: 11px; }
+  @media (min-width: 62em) {
+    .contact-form form .success-msg .error-msg {
+      margin-top: 0; } }
+
+.contact-form form .success-msg {
+  margin-top: 1.2rem;
+  padding: 1rem;
+  border: 1px solid #4d7405;
+  background-color: rgba(61, 96, 3, 0.2);
+  border-radius: 11px; }
+  @media (min-width: 62em) {
+    .contact-form form .success-msg {
+      margin-top: 0; } }

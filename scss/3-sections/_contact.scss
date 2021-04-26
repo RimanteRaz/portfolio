@@ -35,7 +35,7 @@
   form {
     width: 100%;
     label {
-      margin-top: 1.2rem;
+      margin-top: 1rem;
       font-weight: 600;
     }
     input,
@@ -47,10 +47,9 @@
     .btn-div {
       display: flex;
       justify-content: flex-end;
-      margin-top: 1.2rem;
       margin-bottom: 1rem;
       @media (min-width: $small-screen) {
-        margin-top: 2rem;
+        margin-bottom: 0.5rem;
       }
     }
   }
@@ -63,5 +62,27 @@
       grid-template-columns: 1fr 1fr;
       column-gap: 30px;
     }
+  }
+}
+
+.contact-form form .success-msg .error-msg {
+  margin-top: 1.2rem;
+  padding: 1rem;
+  border: 1px solid $red-800;
+  background-color: rgba($red-900, 0.2);
+  border-radius: 11px;
+  @media (min-width: $small-screen) {
+    margin-top: 0;
+  }
+}
+
+.contact-form form .success-msg {
+  margin-top: 1.2rem;
+  padding: 1rem;
+  border: 1px solid $lime-800;
+  background-color: rgba($lime-900, 0.2);
+  border-radius: 11px;
+  @media (min-width: $small-screen) {
+    margin-top: 0;
   }
 }
