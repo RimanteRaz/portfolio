@@ -54,13 +54,14 @@ if (array_key_exists('email', $_POST)) {
       $mail->Body = (empty($name) ? 'A site visitor' : $name) . " writes:\n\n" . $message;
       if (!$mail->send()) {
           if (empty($msg)) {
-            $msg = "</b>Sorry, couldn’t send your message...</b></br>"
+            $msg = "<b>Sorry, couldn’t send your message...</b></br>"
             ."Please try again later or contact me at rimante@rimanteraz.com.";
           }
           $error_msg = $msg;
       } else {
         $success_msg = "<b>Your message has been sent!</b><br>"
         ."I will reply to you shortly.";
+        $_POST = array();
       }
       
   }
