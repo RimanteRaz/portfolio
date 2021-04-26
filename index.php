@@ -1,65 +1,6 @@
-<?php 
-
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-
-// date_default_timezone_set('Etc/UTC');
-
-require './vendor/autoload.php';
-
-if (array_key_exists('email', $_POST)) {
-  $err = false;
-  $msg = '';
-  $email = '';
-  //Validate to address
-  //Never allow arbitrary input for the 'to' address as it will turn your form into a spam gateway!
-  //Substitute appropriate addresses from your own domain, or simply use a single, fixed address
-  $to = 'rimante@rimanteraz.com';
-
-  if (array_key_exists('message', $_POST)) {
-      //Limit length and strip HTML tags
-      $message = substr(strip_tags($_POST['message']), 0, 16384);
-  } else {
-      $message = '';
-      $msg = 'No message provided!';
-      $err = true;
-  }
-  //Apply some basic validation and filtering to the name
-  if (array_key_exists('name', $_POST)) {
-      //Limit length and strip HTML tags
-      $name = substr(strip_tags($_POST['name']), 0, 255);
-  } else {
-      $name = '';
-  }
-  
-  //Make sure the address they provided is valid before trying to use it
-  if (array_key_exists('email', $_POST) && PHPMailer::validateAddress($_POST['email'])) {
-      $email = $_POST['email'];
-  } else {
-      $msg .= 'Error: invalid email address provided';
-      $err = true;
-  }
-  if (!$err) {
-      $mail = new PHPMailer();
-      $mail->isSMTP();
-      $mail->SMTPDebug = SMTP::DEBUG_SERVER;
-      $mail->Host = 'smtp.hostinger.lt';
-      $mail->Port = 587;
-      $mail->CharSet = PHPMailer::CHARSET_UTF8;
-      //It's important not to use the submitter's address as the from address as it's forgery,
-      //which will cause your messages to fail SPF checks.
-      //Use an address in your own domain as the from address, put the submitter's address in a reply-to
-      $mail->setFrom('rimante@rimanteraz.com', (empty($name) ? 'Contact form' : $name));
-      $mail->addAddress($to);
-      $mail->addReplyTo($email, $name);
-      $mail->Body = "Contact form submission\n\n" . $message;
-      if (!$mail->send()) {
-          $msg .= 'Mailer Error: ' . $mail->ErrorInfo;
-      } else {
-          $msg .= 'Message sent!';
-      }
-  }
-} ?>
+<?php
+  include 'contactform.php';
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -284,7 +225,6 @@ if (array_key_exists('email', $_POST)) {
                   type="text"
                   id="name"
                   name="name"
-                  required
                   placeholder="Your name..."
                 />
               </div>
@@ -307,8 +247,11 @@ if (array_key_exists('email', $_POST)) {
               required
               placeholder="Your message..."
             ></textarea>
-            <?php if (!empty($msg)){
-              echo $msg;
+            <?php if (!empty($error_msg)){
+              echo $error_msg;
+            }?>
+            <?php if (!empty($success_msg)){
+              echo $success_msg;
             }?>
             <div class="btn-div">
               <button type="submit" name="submit" class="btn-primary">
