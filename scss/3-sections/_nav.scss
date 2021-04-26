@@ -92,6 +92,7 @@ nav {
 }
 
 .mobile-nav {
+  display: none;
   position: absolute;
   top: 3rem;
   left: 0;
@@ -118,6 +119,7 @@ nav {
 }
 
 .mobile-nav.open {
+  display: block;
   height: 100vh;
   transition: height 500ms ease-in-out;
   ul {

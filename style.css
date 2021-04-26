@@ -15,7 +15,8 @@ button {
   font-size: 100%; }
 
 .btn-primary {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   display: inline-block;
   padding: 8px 20px;
   text-decoration: none;
@@ -29,10 +30,12 @@ button {
   .btn-primary:focus {
     outline: none;
     background-color: #bade44;
-    box-shadow: 0 0 0 3px #f5fccd; }
+    -webkit-box-shadow: 0 0 0 3px #f5fccd;
+            box-shadow: 0 0 0 3px #f5fccd; }
 
 .btn-secondary {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   display: inline-block;
   padding: 8px 20px;
   text-decoration: none;
@@ -44,7 +47,8 @@ button {
     border-color: #d3ee6a; }
   .btn-secondary:focus {
     outline: none;
-    box-shadow: 0 0 0 2px #f5fccd;
+    -webkit-box-shadow: 0 0 0 2px #f5fccd;
+            box-shadow: 0 0 0 2px #f5fccd;
     color: #f5fccd;
     border-color: #f5fccd; }
 
@@ -167,9 +171,15 @@ nav {
   left: 0;
   z-index: 100; }
   nav .container {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     height: 3rem; }
 
 .site-name {
@@ -181,7 +191,11 @@ nav {
   width: 32px;
   height: 20px;
   position: relative;
-  transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+          transform: rotate(0deg);
+  -webkit-transition: 500ms ease-in-out;
+  -o-transition: 500ms ease-in-out;
   transition: 500ms ease-in-out;
   cursor: pointer;
   z-index: 1000; }
@@ -194,7 +208,11 @@ nav {
     border-radius: 3px;
     opacity: 1;
     left: 0;
-    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+            transform: rotate(0deg);
+    -webkit-transition: 250ms ease-in-out;
+    -o-transition: 250ms ease-in-out;
     transition: 250ms ease-in-out; }
     .burger span:nth-child(1) {
       top: 0px; }
@@ -212,10 +230,14 @@ nav {
   left: 50%; }
 
 .burger.open span:nth-child(2) {
-  transform: rotate(45deg); }
+  -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+          transform: rotate(45deg); }
 
 .burger.open span:nth-child(3) {
-  transform: rotate(-45deg); }
+  -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+          transform: rotate(-45deg); }
 
 .burger.open span:nth-child(4) {
   top: 10px;
@@ -233,18 +255,30 @@ nav {
       color: #d3ee6a; }
 
 .mobile-nav {
+  display: none;
   position: absolute;
   top: 3rem;
   left: 0;
   width: 100%;
   height: 0;
+  -webkit-transition: height 500ms ease-in-out 250ms;
+  -o-transition: height 500ms ease-in-out 250ms;
   transition: height 500ms ease-in-out 250ms; }
   .mobile-nav ul {
     opacity: 0;
+    -webkit-transition: opacity 250ms ease-in-out;
+    -o-transition: opacity 250ms ease-in-out;
     transition: opacity 250ms ease-in-out;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     height: 100%;
     padding-top: 2rem;
     background-color: #1b1b2e; }
@@ -255,10 +289,15 @@ nav {
       display: none; } }
 
 .mobile-nav.open {
+  display: block;
   height: 100vh;
+  -webkit-transition: height 500ms ease-in-out;
+  -o-transition: height 500ms ease-in-out;
   transition: height 500ms ease-in-out; }
   .mobile-nav.open ul {
     opacity: 1;
+    -webkit-transition: opacity 250ms ease-in-out;
+    -o-transition: opacity 250ms ease-in-out;
     transition: opacity 250ms ease-in-out; }
 
 .desktop-nav {
@@ -267,6 +306,8 @@ nav {
     .desktop-nav {
       display: block; }
       .desktop-nav ul {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex; }
         .desktop-nav ul li {
           margin-left: 2rem; } }
@@ -304,10 +345,19 @@ nav {
     margin: 0;
     padding-bottom: 2rem; }
   .cta-card .card-body .card-body-btm {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     max-height: 100px; }
     .cta-card .card-body .card-body-btm .btn-secondary,
     .cta-card .card-body .card-body-btm .btn-primary {
@@ -352,8 +402,9 @@ nav {
       margin-top: 3rem;
       display: grid;
       grid-template-columns: 35ch auto;
-      -moz-column-gap: 60px;
-           column-gap: 60px; } }
+      -webkit-column-gap: 60px;
+         -moz-column-gap: 60px;
+              column-gap: 60px; } }
   @media (min-width: 87em) {
     .grid-4x6 {
       grid-template-columns: 4fr 6fr; } }
@@ -406,13 +457,26 @@ nav {
   grid-template-columns: 1fr 1fr 1fr;
   row-gap: 0.75rem; }
   .skill-grid .grid-item {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    align-items: center; }
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center; }
     .skill-grid .grid-item .skill-logo {
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
-      justify-content: center;
-      align-items: center;
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
       background-color: #25253f;
       border-radius: 11px;
       width: 65px;
@@ -466,8 +530,9 @@ nav {
     .main-example {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      -moz-column-gap: 60px;
-           column-gap: 60px;
+      -webkit-column-gap: 60px;
+         -moz-column-gap: 60px;
+              column-gap: 60px;
       padding: 5rem 20px; } }
   @media (min-width: 87em) {
     .main-example {
@@ -487,15 +552,22 @@ nav {
 
 @media (min-width: 40em) {
   .main-example .example-image {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     position: relative;
     height: 55vw; }
     .main-example .example-image img:nth-of-type(2) {
       width: auto;
       height: 35vw;
-      filter: drop-shadow(0px 4px 30px rgba(22, 22, 38, 0.9)); }
+      -webkit-filter: drop-shadow(0px 4px 30px rgba(22, 22, 38, 0.9));
+              filter: drop-shadow(0px 4px 30px rgba(22, 22, 38, 0.9)); }
     .main-example .example-image img:nth-of-type(1) {
       display: block;
       opacity: 0.85;
@@ -595,12 +667,17 @@ nav {
       font-weight: 600; }
     .contact-form form input,
     .contact-form form textarea {
-      box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+              box-sizing: border-box;
       margin-top: 0.3rem;
       width: 100%; }
     .contact-form form .btn-div {
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
-      justify-content: flex-end;
+      -webkit-box-pack: end;
+          -ms-flex-pack: end;
+              justify-content: flex-end;
       margin-top: 1.2rem;
       margin-bottom: 1rem; }
       @media (min-width: 62em) {
@@ -611,5 +688,6 @@ nav {
   .contact-form form .row-2-col {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    -moz-column-gap: 30px;
-         column-gap: 30px; } }
+    -webkit-column-gap: 30px;
+       -moz-column-gap: 30px;
+            column-gap: 30px; } }

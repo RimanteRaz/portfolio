@@ -19,9 +19,9 @@
         </div>
         <div class="mobile-nav">
           <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#examples">Examples</a></li>
-            <li><a href="#contact">Contact Me</a></li>
+            <li><a href="#about" class="mobile-nav-link">About</a></li>
+            <li><a href="#examples" class="mobile-nav-link">Examples</a></li>
+            <li><a href="#contact" class="mobile-nav-link">Contact Me</a></li>
           </ul>
         </div>
         <div class="desktop-nav">
